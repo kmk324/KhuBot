@@ -14,11 +14,10 @@ app.get('/keyboard',function(req,res){ // setting keyboard for first open
   };
   res.send(keyboard);
 });
-
 app.post('/message', function(req,res){
   let user_key = decodeURIComponent(req.body.user_key); // user's key
   let type = decodeURIComponent(req.body.type); // message type
-  let content = decodeURIComponent(req.body.content); // user's message
+  let content = decodeURIComponent(req.body.content); // user's message, string형
   console.log(user_key);
   console.log(type);
   console.log(content);
@@ -32,12 +31,20 @@ app.post('/message', function(req,res){
     }
     res.send(answer);
   }
-  if(content == "학식" || content == '1'){
+  else if(content == "1" || content == "학식" ){
     let answer = {
       "message":{
         "text":"학생회관, 공대 학식\n http://community.khu.ac.kr/forum/fldentry_list?cid=0000a\n\n"+
         "우정원 학식 \n http://www.woojungwon.net/Ghostel/mall_main.php\n\n"+
         "제2 기숙사 학식 \n https://dorm2.khu.ac.kr/dorm2/40/4051.kmc"
+      }
+    }
+    res.send(answer);
+  }
+  else if(content == '5'||content == "khuwifi-guest 비밀번호"){
+    let answer = {
+      "message":{
+        "text":"khuwifi-guest 비밀번호는 'vision2020' 입니다."
       }
     }
     res.send(answer);
