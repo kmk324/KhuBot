@@ -59,22 +59,35 @@ app.post('/message', function(req,res){
     console.log('교내연락처')
     let answer = {
       "message":{
-        "text":"경희대학교 교내 연락처 정보 입니다.\n "+
-        " "
+        "text":"경희대학교 교내 연락처 정보 입니다.\n\n\n "+
+        "바로처리실\n학생회관 216호\n031-201-2288\n\n"+
+        "취업진로지원처\n학생회관 1층\n031-201-3061\n\n"+
+        "체육교육관\n체육대학 116호\n031-201-2154\n\n"+
+        "성평등상담실\n학생회관 2층\n031-201-2806\n\n"+
+        "중앙도서관(국제)\n031-201-3217\n\n"+
+        "정보지원처\n031-201-3163\n\n"+
+        "우정원\n031-5125-3640\n\n"+
+        "제2기숙사\n031-201-3638"
       }
     }
     res.send(answer);
     return;
   }
+
   else if(content == '4' || content=='컴퓨터공학과 교수님연구실 및 연락처 정보'){
     console.log('컴퓨터공학과 교수님연구실 및 연락처')
-    var url = 'http://ce.khu.ac.kr/index.php?hCode=MEMBERS_LIST&gubun=P';
-    request(url, (error,response,body) => {
-      const $ = cheerio.load(body);
+//    var url = 'http://ce.khu.ac.kr/index.php?hCode=MEMBERS_LIST&gubun=P';
+//    request(url, (error,response,body) => {
+//      const $ = cheerio.load(body);
 
     let answer = {
-
+      "message":{
+        "text":"경희대학교 컴퓨터공학과 교수님연구실 및 연락처\n\n"+
+        "http://ce.khu.ac.kr/index.php?hCode=MEMBERS_LIST"
+      }
     }
+    res.send(answer);
+    return;
   }
 
 
@@ -90,11 +103,18 @@ app.post('/message', function(req,res){
     return;
   }
 
+
   else{
     console.log('나머지')
     let answer = {
       "message":{
-        "text":"죄송합니다. "+content + "에 대한 정보가 없습니다."
+        "text":"죄송합니다. '"+content + "'에 대한 정보가 없습니다.\n\n"+
+        "원하는 정보의 번호를 선택하시거나 질문을 입력해주세요.\n"+
+        "1. 학식정보\n"+
+        "2. 종합정보시스템\n"+
+        "3. 교내연락처\n"+
+        "4. 컴퓨터공학과 교수님연구실 및 연락처 정보\n"+
+        "5. khuwifi-guest비밀번호"
       }
     }
     res.send(answer);
