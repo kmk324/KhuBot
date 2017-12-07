@@ -1,0 +1,3 @@
+*.o
+/public
+/node_modules
