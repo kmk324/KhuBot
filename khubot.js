@@ -21,7 +21,7 @@ app.post('/message', function(req,res){
   let type = decodeURIComponent(req.body.type); // message type
   let content = decodeURIComponent(req.body.content); // user's message, string형
 
-
+  console.log(content);
   //추가할 목록, khuwifi-guest 비밀번호, 단과대 행정실 위치 및 전화번호., 수업정보.
   if(content == "개발자"){
     let answer = {
@@ -90,8 +90,6 @@ app.post('/message', function(req,res){
     return;
   }
 
-
-
   else if(content == '5'||content == "khuwifi-guest 비밀번호"){
     console.log('비밀번호')
     let answer = {
@@ -103,6 +101,88 @@ app.post('/message', function(req,res){
     return;
   }
 
+  else if(content == '6' || content.indexOf('인턴지원센터')!==-1){
+  console.log('인턴지원센터')
+  let answer = {
+    "message":{
+      "text":"인턴지원 센터 정보입니다.\n"+
+      "http://intern.khu.ac.kr"
+    }
+  }
+  res.send(answer);
+  return;
+}
+
+//그외 재미난 상황을 위한 것들
+else if(content.indexOf('안녕')!==-1 || content.indexOf('반가워')!==-1){
+console.log('안녕')
+let answer = {
+  "message":{
+    "text":"안녕하세요! Khubot입니다."
+  }
+}
+res.send(answer);
+return;
+}
+
+
+else if(content.indexOf('멍청이')!==-1 || content.indexOf('바보')!==-1){
+console.log('바보')
+let answer = {
+  "message":{
+    "text":"흑흑 맞아요. 전 바보입니다."
+  }
+}
+res.send(answer);
+return;
+}
+
+else if(content.indexOf('ㅈㄹ')!==-1 || content.indexOf('ㅅㅂ')!==-1){
+console.log('지랄,씨발')
+let answer = {
+  "message":{
+    "text":"흑흑 욕은 하지말아주세요.ㅠㅠ"
+  }
+}
+res.send(answer);
+return;
+}
+else if(content.indexOf('사랑해')!==-1 || content.indexOf('사랑합')!==-1){
+console.log('사랑해')
+let answer = {
+  "message":{
+    "text":"저도 사랑해요."
+  }
+}
+res.send(answer);
+return;
+}
+
+else if(content.indexOf('몇살')!==-1 || content.indexOf('몇세')!==-1){
+console.log('나이')
+let answer = {
+  "message":{
+    "text":"안녕하세요! 저는 한살 입니다."
+  }
+}
+res.send(answer);
+return;
+}
+
+else if(content.indexOf('현재시각')!==-1 || content.indexOf('몇시')!==-1){
+console.log('시간')
+var time=Date();
+let answer = {
+  "message":{
+    "text":""+time+"입니다."
+  }
+}
+res.send(answer);
+return;
+}
+
+
+
 
   else{
     console.log('나머지')
@@ -113,8 +193,9 @@ app.post('/message', function(req,res){
         "1. 학식정보\n"+
         "2. 종합정보시스템\n"+
         "3. 교내연락처\n"+
-        "4. 컴퓨터공학과 교수님연구실 및 연락처 정보\n"+
-        "5. khuwifi-guest비밀번호"
+        "4. 컴퓨터공학과 교수님연구실 및 연락처정보\n"+
+        "5. khuwifi-guest비밀번호"+
+        "6. 인턴지원센터"
       }
     }
     res.send(answer);
