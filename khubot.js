@@ -59,7 +59,7 @@ app.post('/message', function(req,res){
     console.log('교내연락처')
     let answer = {
       "message":{
-        "text":"경희대학교 교내 연락처 정보 입니다.\n\n\n "+
+        "text":"경희대학교 교내 연락처 정보 입니다.\n\n\n"+
         "바로처리실\n학생회관 216호\n031-201-2288\n\n"+
         "취업진로지원처\n학생회관 1층\n031-201-3061\n\n"+
         "체육교육관\n체육대학 116호\n031-201-2154\n\n"+
@@ -182,8 +182,6 @@ return;
 }
 
 
-
-
   else{
     console.log('나머지')
     let answer = {
@@ -194,7 +192,7 @@ return;
         "2. 종합정보시스템\n"+
         "3. 교내연락처\n"+
         "4. 컴퓨터공학과 교수님연구실 및 연락처정보\n"+
-        "5. khuwifi-guest비밀번호"+
+        "5. khuwifi-guest비밀번호\n"+
         "6. 인턴지원센터"
       }
     }
